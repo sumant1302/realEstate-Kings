@@ -153,7 +153,7 @@ CREATE TABLE `our_team` (
   `Designation` varchar(100) NOT NULL,
   `Image` varchar(200) NOT NULL DEFAULT 'NA',
   `About` varchar(1000) NOT NULL DEFAULT 'NA',
-  `UpdatedAt` date NOT NULL DEFAULT current_timestamp()
+  `UpdatedAt` date NOT NULL current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
