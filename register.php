@@ -107,8 +107,6 @@ if (empty($name_error) && empty($email_error) && empty($mobile_error) && empty($
 
         if (mysqli_stmt_execute($stmt)) {
             session_start();
-            $_SESSION["name"] = $name;
-            $_SESSION["id"] = $id;
             $_SESSION["loggedin"] = true;
             echo "<script>alert('User registered successfully')</script>";
             $secondsWait = 0;
