@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         //header("location: login-reg.php");
                     } else {
                         $_SESSION["loggedin"] = false;
+                        echo "<script>alert('Access denied! Please check your login credentials')</script>";
                     }
                 }
             }
