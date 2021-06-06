@@ -45,7 +45,7 @@
 	</div>
 	<div class="header-login" style="position: absolute; right: 5px; bottom: 5px;">
 		<?php
-		if (isset($_SESSION["id"])) { ?>
+		if ($_SESSION["loggedin"] !== true) { ?>
 
 			<button type="rectangle" id="myBtn"><span class="material-icons" style="font-size: 20px;left: 0px; display: inline-block; vertical-align: middle; text-align: center;">
 					person
