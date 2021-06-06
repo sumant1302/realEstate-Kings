@@ -39,6 +39,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $secondsWait = 0;
                         header("Refresh:$secondsWait");
                         //header("location: login-reg.php");
+                    } else {
+                        $_SESSION["loggedin"] = false;
                     }
                 }
             }
