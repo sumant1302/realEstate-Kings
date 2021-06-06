@@ -1,54 +1,51 @@
 <?php
-    include 'main.php';
-    $lemail=$lpassword=$lmobile="";
-    $lemail_err=$lpass_err=$lmobile_err="";
+include 'main.php';
+$lemail = $lpassword = $lmobile = "";
+$lemail_err = $lpass_err = $lmobile_err = "";
 
-    if($_SERVER['REQUEST_METHOD']=="POST"){
-    if(isset($_POST['l-email'])){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['l-email'])) {
         //if(filter_var(trim($_POST['l-email']), FILTER_VALIDATE_EMAIL)){
-            $lemail=trim($_POST['l-email']);
-        }
-        else{
-            $lemail_err="Please enter a valid email";
-        }
+        $lemail = trim($_POST['l-email']);
+    } else {
+        $lemail_err = "Please enter a valid email";
+    }
     //}
 
-    if(isset($_POST['l-password'])){
-        $lpassword=trim($_POST['l-password']);
+    if (isset($_POST['l-password'])) {
+        $lpassword = trim($_POST['l-password']);
         //echo $lpassword;
     }
 
-    if(empty($lemail_err)){
-        $sql="SELECT UserID, Name, Email, Password FROM basicreglogin WHERE Email=? OR Contact=?";
-        $stmt=mysqli_prepare($conn, $sql);
+    if (empty($lemail_err)) {
+        $sql = "SELECT UserID, Name, Email, Password FROM basicreglogin WHERE Email=? OR Contact=?";
+        $stmt = mysqli_prepare($conn, $sql);
 
         mysqli_stmt_bind_param($stmt, "ss", $param_email, $param_mobile);
-            $param_email=$lemail;
-            $param_mobile=$lemail;
-            
-            if(mysqli_stmt_execute($stmt)){
-                mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt)==1){
-                    mysqli_stmt_bind_result($stmt, $id, $name, $lemail, $hashed_password);
-                if(mysqli_stmt_fetch($stmt)){
+        $param_email = $lemail;
+        $param_mobile = $lemail;
 
-                    if(password_verify($lpassword, $hashed_password)){
+        if (mysqli_stmt_execute($stmt)) {
+            mysqli_stmt_store_result($stmt);
+            if (mysqli_stmt_num_rows($stmt) == 1) {
+                mysqli_stmt_bind_result($stmt, $id, $name, $lemail, $hashed_password);
+                if (mysqli_stmt_fetch($stmt)) {
+
+                    if (password_verify($lpassword, $hashed_password)) {
                         session_start();
-                        $_SESSION["name"]=$name;
-                        $_SESSION["id"]=$id;
-                        $_SESSION["loggedin"]= true;
+                        $_SESSION["name"] = $name;
+                        $_SESSION["id"] = $id;
+                        $_SESSION["loggedin"] = true;
                         $secondsWait = 0;
                         header("Refresh:$secondsWait");
                         //header("location: login-reg.php");
                     }
-                    
                 }
             }
         }
-
     }
 }
-    
+
 
 ?>
 <!--

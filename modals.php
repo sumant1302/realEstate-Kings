@@ -87,12 +87,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="reg-form-error"><?php echo $mobile_error; ?></div>
 				<div>
 					<label for="pass">Password:<span class="req-ast">*</span></label>
-					<input type="password" name="pass" id="pass" value="<?php $_SESSION['pass']; ?>" required>
+					<input type="password" name="pass" id="pass" value="<?php $_SESSION['pass']; ?>" minlength="8" maxlength="16" required>
 				</div>
 				<div class="reg-form-error"><?php echo $password_error; ?></div>
 				<div>
 					<label for="c-pass">Confirm Password:<span class="req-ast">*</span></label>
-					<input type="password" name="c-pass" id="c-pass" value="<?php $_SESSION['c-pass']; ?>">
+					<input type="password" name="c-pass" id="c-pass" value="<?php $_SESSION['c-pass']; ?> " minlength="8" maxlength="16" required>
 				</div>
 				<div class="reg-form-error"><?php echo $confirm_password_error; ?></div>
 				<button type="submit" class="submit" name="register">Register</button>
