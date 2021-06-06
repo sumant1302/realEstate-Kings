@@ -110,10 +110,11 @@ if (empty($name_error) && empty($email_error) && empty($mobile_error) && empty($
             $_SESSION["name"] = $name;
             $_SESSION["id"] = $id;
             $_SESSION["loggedin"] = true;
+            echo "<script>alert('User registered successfully')</script>";
             $secondsWait = 0;
             header("Refresh:$secondsWait");
         } else {
-            $msg = "Something went wrong!! Please try again.";
+            echo "<script>alert('User could not be registered')</script>";
         }
     }
 
