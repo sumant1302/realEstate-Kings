@@ -1,12 +1,16 @@
 <?php
-$url = parse_url(getenv("mysql://b7bd04fe9ff077:fc90d0d5@us-cdbr-east-04.cleardb.com/heroku_40a387f3062e7d1?reconnect=true"));
-//mysql --host=us-cdbr-east.cleardb.com --user=b5xxxxx7 --password=37d8faad --reconnect heroku_xxxxxx < my_dump_file.sql
-$server = $url["host"]; //us-cdbr-east-04.cleardb.com
-$username = $url["user"]; //b7bd04fe9ff077
-$password = $url["pass"]; //fc90d0d5
-$db = substr($url["path"], 1); //heroku_40a387f3062e7d1
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"], 1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
 //CLEARDB_DATABASE_URL => mysql://[username]:[password]@[host]/[database name]?reconnect=true
-$conn = new mysqli($server, $username, $password, $db);
 if (!$conn) {
     die("Error! Connection unsuccessfull");
 }
