@@ -2,6 +2,7 @@
 # Introduction
 ---
 The Real Estate Website is a web application developed using PHP and MySQL that allows users to browse, search, and list properties for sale or rent. It provides a platform for real estate agents and property owners to showcase their listings and for potential buyers or renters to find their desired properties.
+
 ---
 # Features
 ---
@@ -10,7 +11,7 @@ The Real Estate Website is a web application developed using PHP and MySQL that 
 -> Users can create accounts and log in to the website.
 -> User authentication and authorization are implemented to protect sensitive information and ensure secure access.
 
-## Property Listing and Search:
+### Property Listing and Search:
 -> Property owners or agents can list properties with details such as location, price, description, and media (images or videos).
 -> Users can search for properties based on various criteria such as location, price range, property type, and more.
 
@@ -23,6 +24,7 @@ The Real Estate Website is a web application developed using PHP and MySQL that 
 
 ### Admin Panel:
  -> An admin panel is available to manage the website, including user management, property approvals, and content management.
+ 
 ---
 # Contributing
 
